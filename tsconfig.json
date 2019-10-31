@@ -1,0 +1,44 @@
+{
+  "exclude": ["node_modules", "dist/**/*", "**/*.spec.ts", "**/*.test.ts", "**/*.png"],
+  "compilerOptions": {
+    /* =Basic Options */
+    "target": "es5",
+    "lib": ["dom", "es6", "dom.iterable", "esnext"],
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strict": true,
+    "allowJs": true,
+    // "checkJs": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "module": "commonjs",
+
+    "newLine": "lf",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "baseUrl": ".",
+
+    /* =Strict Type-Checking Options */
+    // "strict": true,
+    // "noImplicitAny": true,
+    // "strictNullChecks": true,
+    // "strictPropertyInitialization": true,
+    // "strictFunctionTypes": true,
+    // "noImplicitThis": true,
+    // "alwaysStrict": true,
+
+    /* =Additional Checks */
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "useTranspileModule": true,
+    "doTypeCheck": true,
+    "forkChecker": true
+  }
+}

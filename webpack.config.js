@@ -1,4 +1,3 @@
-
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,10 +8,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'awesome-typescript-loader',
         },
       },
       {
@@ -27,10 +33,7 @@ module.exports = {
       {
         test: /\.css$/,
         include: THIS_DIR,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-        ],
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       },
       {
         test: /\.jpg$/,
@@ -54,10 +57,15 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    hot: true,
+    contentBase: THIS_DIR.concat('src/'),
+  },
   resolve: {
     alias: {
       src: THIS_DIR.concat('src/'),
     },
+    extensions: ['.ts', '.tsx', '.wasm', '.mjs', '.jsx', '.js', '.json', '.png'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -72,7 +80,9 @@ module.exports = {
   },
   output: {
     path: THIS_DIR.concat('dist/'),
-    filename: '[name].[contenthash].js',
+    publicPath: '/',
+    filename: 'static/js/[name]_[hash].js',
+    chunkFilename: 'static/js/[name]_[chunkhash].js',
   },
   optimization: {
     runtimeChunk: 'single',
